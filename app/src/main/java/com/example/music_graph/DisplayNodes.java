@@ -21,7 +21,7 @@ public class DisplayNodes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_nodes);
+        setContentView(R.layout.activity_display_nodes);  
 
         nodes = MainActivity.graph.getNodes();
 
