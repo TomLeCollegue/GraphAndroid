@@ -13,9 +13,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-public class DisplayNodes extends AppCompatActivity {
+public class DisplayNodes extends AppCompatActivity implements Adapter_Nodes.OnItemClickListener {
     private RecyclerView rcNodes;
     private ArrayList<Node> nodes = new ArrayList<Node>();
+    private Adapter_Nodes MyAdapter;
+
+
+
+
+
 
 
 
@@ -28,11 +34,10 @@ public class DisplayNodes extends AppCompatActivity {
 
         rcNodes = (RecyclerView) findViewById(R.id.recycler_view_nodes);
         rcNodes.setLayoutManager(new LinearLayoutManager(DisplayNodes.this, LinearLayoutManager.VERTICAL, false));
-        Adapter_Nodes MyAdapter = new Adapter_Nodes(nodes);
+        MyAdapter = new Adapter_Nodes(nodes);
         rcNodes.setAdapter(MyAdapter);
-
-
         MyAdapter.setonItemClickListener(DisplayNodes.this);
+
 
     }
 
