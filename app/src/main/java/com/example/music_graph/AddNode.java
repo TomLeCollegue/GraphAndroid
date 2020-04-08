@@ -15,6 +15,7 @@ public class AddNode extends AppCompatActivity {
 
     private Button CreateNode;
     private EditText NameNode;
+    private EditText TypeNode;
 
 
 
@@ -25,20 +26,21 @@ public class AddNode extends AppCompatActivity {
 
         CreateNode = (Button) findViewById(R.id.button_ajout_noeud);
         NameNode = (EditText) findViewById(R.id.nom_noeud_text);
+        TypeNode = (EditText) findViewById(R.id.type_noeud_text);
 
         CreateNode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createNode(NameNode.getText().toString());
+                createNode((NameNode.getText().toString()), (TypeNode.getText().toString()));
 
                 Toast.makeText(AddNode.this,NameNode.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void createNode(String name){
-        Node node = new Node(name);
+    private void createNode(String name, String type){
+        Node node = new Node(name, type);
         MainActivity.graph.createNode(node);
     }
 

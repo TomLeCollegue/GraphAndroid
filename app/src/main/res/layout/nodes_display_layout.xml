@@ -11,10 +11,18 @@
         <TextView
             android:id="@+id/Name_nodes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="7sp"
             android:layout_marginBottom="7sp"
             android:gravity="center_horizontal"
-            android:text="TextView" />
+            android:text="name"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/type_node"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="type" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

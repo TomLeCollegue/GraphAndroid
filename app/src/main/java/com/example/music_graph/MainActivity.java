@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         bAddRelation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddNode.class));
+                startActivity(new Intent(MainActivity.this, AddRelation.class));
             }
         });
         bSearchNode.setOnClickListener(new View.OnClickListener() {

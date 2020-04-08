@@ -8,35 +8,33 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-
 import java.util.ArrayList;
 
-public class Adapter_Nodes extends RecyclerView.Adapter<Adapter_Nodes.MyViewHolder1>{
+public class Adapter_Edges extends RecyclerView.Adapter<Adapter_Edges.MyViewHolder1>{
 
-    public ArrayList<Node> nodes;
+    public ArrayList<Edge> edges;
 
-    public Adapter_Nodes(ArrayList<Node> Nodes) {
-        this.nodes = Nodes;
+    public Adapter_Edges(ArrayList<Edge> Edges) {
+        this.edges = Edges;
     }
 
     @NonNull
     @Override
-    public Adapter_Nodes.MyViewHolder1 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Adapter_Edges.MyViewHolder1 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         final View view = inflater.inflate(R.layout.nodes_display_layout, parent, false);
         return new MyViewHolder1(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_Nodes.MyViewHolder1 holder, int position) {
-        Node node = nodes.get(position);
-        holder.display(node);
+    public void onBindViewHolder(@NonNull Adapter_Edges.MyViewHolder1 holder, int position) {
+        Edge edge = edges.get(position);
+        holder.display(edge);
     }
 
     @Override
     public int getItemCount() {
-        return nodes.size();
+        return edges.size();
     }
 
     public class MyViewHolder1 extends RecyclerView.ViewHolder {
@@ -54,10 +52,10 @@ public class Adapter_Nodes extends RecyclerView.Adapter<Adapter_Nodes.MyViewHold
 
         }
 
-        public void display(Node node) {
+        public void display(Edge edge) {
 
-            NameNode.setText(node.getName());
-            TypeNode.setText(node.getType() + " id =" + node.getNodeId());
+            NameNode.setText(edge.getEnd().getName());
+            TypeNode.setText(edge.getRelation());
 
         }
     }

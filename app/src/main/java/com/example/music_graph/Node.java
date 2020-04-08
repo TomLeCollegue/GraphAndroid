@@ -11,34 +11,33 @@ import java.util.*;
 public class Node {
     private int id;
     private String name;
+    private String type;
     private ArrayList<Edge> neighbours = new ArrayList<Edge>();
 
     public int getNodeId() {
         return this.id;
     }
 
+    public String getType() {
+        return type;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void addNeighbours (Edge e) {
-        if(neighbours.contains(e)) {
-            System.out.println("error");
-        }
-        else{
-            neighbours.add(e);
-        }
-    }
-
-    public Node(int id, String name, ArrayList<Edge> neighbours) {
-        this.id = id;
+    public Node(String name, String type) {
         this.name = name;
-        this.neighbours = neighbours;
-    }
-
-    public Node(String name) {
-        this.name = name;
+        this.type = type;
         this.id = MainActivity.graph.getNumberOfNodes();
+    }
+
+    public void AddEdge(Edge e){
+        neighbours.add(e);
+    }
+
+    public ArrayList<Edge> getNeighbours() {
+        return neighbours;
     }
 
     @Override
