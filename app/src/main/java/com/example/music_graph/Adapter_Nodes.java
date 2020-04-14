@@ -78,7 +78,7 @@ public class Adapter_Nodes extends RecyclerView.Adapter<Adapter_Nodes.MyViewHold
         public void display(Node node) {
 
             NameNode.setText(node.getName());
-            TypeNode.setText(node.getType() + " id =" + node.getNodeId());
+            TypeNode.setText(node.getType());
 
         }
     }

@@ -16,9 +16,10 @@ public class AddRelation extends AppCompatActivity {
     private Button bAddRelation;
     private Spinner spinnern1;
     private Spinner spinnern2;
-    private EditText textRelation;
+    private Spinner typeRelation;
     private int idN1;
     private int idN2;
+    private int position_type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class AddRelation extends AppCompatActivity {
         bAddRelation = (Button) findViewById(R.id.button_add_relation);
         spinnern1 = (Spinner) findViewById(R.id.spinner_n1);
         spinnern2 = (Spinner) findViewById(R.id.spinner_n2);
-        textRelation = (EditText) findViewById(R.id.edit_text_relation);
+        typeRelation = (Spinner) findViewById(R.id.spinner_type_relation);
 
 
         //-------Adapter n1-------------
@@ -69,17 +70,31 @@ public class AddRelation extends AppCompatActivity {
         });
 
 
+        //spinner Relation type
 
+        ArrayAdapter<String> adapter_type = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, MainActivity.graph.getTypesRelations());
+        typeRelation.setAdapter(adapter_type);
 
+        typeRelation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                position_type = position;
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
 
         bAddRelation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createEdge(idN1 ,idN2, textRelation.getText().toString());
-                Toast.makeText(AddRelation.this,textRelation.getText().toString(), Toast.LENGTH_SHORT).show();
+                createEdge(idN1 ,idN2, MainActivity.graph.getTypesRelations().get(position_type));
+                Toast.makeText(AddRelation.this, MainActivity.graph.getTypesRelations().get(position_type), Toast.LENGTH_SHORT).show();
             }
         });
 
