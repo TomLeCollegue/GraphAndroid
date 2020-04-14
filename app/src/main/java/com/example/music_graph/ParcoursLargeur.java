@@ -68,7 +68,6 @@ public class ParcoursLargeur extends AppCompatActivity {
             public void onClick(View v) {
 
                 ParcoursLargeurFonction();
-                ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(id), 0, MainActivity.graph.getNodes().get(id), " "));
 
 
             }
@@ -77,7 +76,7 @@ public class ParcoursLargeur extends AppCompatActivity {
         bRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 rv.setLayoutManager(new LinearLayoutManager(ParcoursLargeur.this, LinearLayoutManager.VERTICAL, false));
                 MyAdapter = new AdapteurRvParcoursLargeur(ListNode);
                 rv.setAdapter(MyAdapter);
@@ -88,7 +87,6 @@ public class ParcoursLargeur extends AppCompatActivity {
 
 
     private void ParcoursLargeurFonction(){
-        ListNode.clear();
 
         parcoursNoeuds(MainActivity.graph.getNodes().get(id), 1);
     }
@@ -96,8 +94,9 @@ public class ParcoursLargeur extends AppCompatActivity {
 
     private void parcoursNoeuds(Node n, int distance){
         int nbVoisins = n.getNeighbours().size();
-        for(int i = 0; i <= nbVoisins; i++){
-            if (nbVoisins < 0){
+        for(int i = 0; i < nbVoisins; i++){
+            if (nbVoisins > 0){
+                
                 ListNode.add(new NodeAndDistance(n.getNeighbours().get(i).getEnd(), distance, n, n.getNeighbours().get(i).getRelation()));
                 parcoursNoeuds(n.getNeighbours().get(i).getEnd(), distance+1);
             }
