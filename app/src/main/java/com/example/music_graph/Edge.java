@@ -9,9 +9,12 @@ public class Edge {
     public int getId() {
         return this.id;
     }
-    public Node getStart() {
+
+    public Node getStart()
+    {
         return this.start;
     }
+
     public int getIdOfStartNode() {
         return this.start.getNodeId();
     }
@@ -27,11 +30,11 @@ public class Edge {
         return this.relation;
     }
 
-    public Edge(Node start, Node end, String relation, int id) {
+    public Edge(Node start, Node end, String relation) {
         this.start = start;
         this.end = end;
         this.relation = relation;
-        this.id = id;
     }
+
 }
 

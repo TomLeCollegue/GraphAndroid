@@ -11,28 +11,50 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.25"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Completer le Graph" />
+
         <Button
             android:id="@+id/add_node"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="Ajouter un Noeud" />
-
-        <Button
-            android:id="@+id/search_node"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rechercher un noeud" />
 
         <Button
             android:id="@+id/add_relation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
             android:text="Ajouter une relation" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Chercher les informations" />
 
         <Button
             android:id="@+id/display_all_nodes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:text="Afficher tous les Noeuds" />
+
+        <Button
+            android:id="@+id/parcours_larg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Parcours en Largeur" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
