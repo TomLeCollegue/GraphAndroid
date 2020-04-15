@@ -39,7 +39,6 @@ public class InfoNode extends AppCompatActivity implements Adapter_Edges.OnItemC
     }
 
     public void onItemClick(int position) {
-
         int id = MainActivity.graph.getNodes().get(0).getNeighbours().get(position).getEnd().getNodeId();
         Intent intent = new Intent(InfoNode.this, InfoNode.class);
         intent.putExtra("noeud", id);

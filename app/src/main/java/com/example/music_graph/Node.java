@@ -3,12 +3,13 @@ package com.example.music_graph;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.*;
 
 
-public class Node {
+public class Node implements Serializable {
     private int id;
     private String name;
     private String type;

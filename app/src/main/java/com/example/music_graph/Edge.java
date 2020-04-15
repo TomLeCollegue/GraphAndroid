@@ -1,6 +1,8 @@
 package com.example.music_graph;
 
-public class Edge {
+import java.io.Serializable;
+
+public class Edge implements Serializable {
     private Node start;
     private Node end;
     private String relation;

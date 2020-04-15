@@ -1,6 +1,8 @@
 package com.example.music_graph;
 
-public class NodeAndDistance {
+import java.io.Serializable;
+
+public class NodeAndDistance implements Serializable {
 
     Node node;
     int distance;
