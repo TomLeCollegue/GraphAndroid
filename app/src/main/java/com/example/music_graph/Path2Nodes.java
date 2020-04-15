@@ -16,6 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 public class Path2Nodes extends AppCompatActivity {
 
@@ -83,77 +84,63 @@ public class Path2Nodes extends AppCompatActivity {
         bSearchPath.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FindNode2 = false;
-                ParcoursLargeurFonction(); // complete liste node avec Parcours
+                ListNode.clear();
+                ListPath.clear();
 
-
-                    ListPath.clear();
-                if(FindNode2 == true) {
-                    boolPath.setText("Chemin Trouvé !");
-                    ListPath.add(ListNode.get(ListNode.size() - 1));      // on ajoute a ListPath le dernier noeud de la ListNode
-                    GeneratePath(ListPath.get(0).getParent(), ListNode.size() - 2);
-                    ListPath.add(ListNode.get(0));
-                }
-                else{
-                    boolPath.setText("Pas de Chemin Trouvé");
-                }
+                parcoursGraph(2, 0 );
                 Collections.reverse(ListPath);
-
                 rv.setLayoutManager(new LinearLayoutManager(Path2Nodes.this, LinearLayoutManager.VERTICAL, false));
-                MyAdapter = new AdapteurRvParcoursLargeur(ListPath);
+                MyAdapter = new AdapteurRvParcoursLargeur(ListNode);
                 rv.setAdapter(MyAdapter);
             }
         });
-
-
-
     }
 
-    private void ParcoursLargeurFonction(){
-        ListNode.clear();
-        ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(id_position1), 0, MainActivity.graph.getNodes().get(id_position1), " "));
-        parcoursNoeuds(MainActivity.graph.getNodes().get(id_position1), 1);
-    }
+    private void parcoursGraph(int distance, int nbVoisinprecedant) {
+        int compteurVoisins = 0;
 
+        // Lors de l'initialisation
+        if (ListNode.isEmpty()) {
+            //on ajoute le noeud de base
+            ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(id_position1), 0, MainActivity.graph.getNodes().get(id_position1), " "));
 
-    private void parcoursNoeuds(Node n, int distance){
-        int nbVoisins = n.getNeighbours().size();
-        for(int i = 0; i < nbVoisins; i++){
-            if ((nbVoisins > 0) && (FindNode2 == false)){
-                if(IsInList(n.getNeighbours().get(i).getEnd()) == false) {
-                    ListNode.add(new NodeAndDistance(n.getNeighbours().get(i).getEnd(), distance, n, n.getNeighbours().get(i).getRelation()));
-                    if (ListNode.get(ListNode.size() - 1).getNode().equals(MainActivity.graph.getNodes().get(id_position2))) {
-                        FindNode2 = true;
+            //on ajoute tous ses voisins;
+            for (int i = 0; i < MainActivity.graph.getNodes().get(id_position1).getNeighbours().size(); i++) {
+                //if ( !IsInList(MainActivity.graph.getNodes().get(id_position1).getNeighbours().get(i).getEnd()) ){
+                ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(id_position1).getNeighbours().get(i).getEnd(), 1, MainActivity.graph.getNodes().get(id_position1), MainActivity.graph.getNodes().get(id_position1).getNeighbours().get(i).getRelation()));
+                compteurVoisins++;
+                //}
+            }
+            nbVoisinprecedant = compteurVoisins;
+            boolPath.setText("nombre de voisin : "+ nbVoisinprecedant);
+        }
+        compteurVoisins = 0;
+        if (nbVoisinprecedant != 0) {
+
+            for (int i = 0; i < nbVoisinprecedant + 1 + 1; i++) {
+                for (int j = 0; j < ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().size(); j++) {
+                    if (!IsInList(ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getEnd())) {
+                        ListNode.add(new NodeAndDistance( ListNode.get(ListNode.size() -1 - i).getNode().getNeighbours().get(j).getEnd(), distance, ListNode.get(ListNode.size() - 1 - i).getNode(), " "));
+                        compteurVoisins++;
+                        i++;
+                        boolPath.setText("nombre de voisin : " + compteurVoisins);
                     }
                 }
             }
         }
-        for(int i = 0; i < nbVoisins; i++){
-            if ((nbVoisins > 0) && (FindNode2 == false)){
-                if(IsInList(n.getNeighbours().get(i).getEnd())) {
-                    parcoursNoeuds(n.getNeighbours().get(i).getEnd(), distance + 1);
-                }
-            }
+        if (compteurVoisins != 0){
+            parcoursGraph(distance + 1 , compteurVoisins);
         }
+
     }
 
 
 
-    private void GeneratePath(Node parent, int index){
-        if ((ListNode.get(index).node.equals(parent)) && (index >= 1)){
 
-            ListPath.add(ListNode.get(index));
-
-            GeneratePath(ListNode.get(index).getParent(), index -1);
-        }
-        else if (index >= 1) {
-            GeneratePath(parent, index-1);
-        }
-    }
 
     private boolean IsInList(Node n){
         boolean Inlist = false;
-        for (int i = 1; i < ListNode.size(); i++ ){
+        for (int i = 0; i < ListNode.size(); i++ ){
             if (ListNode.get(i).getNode().equals(n)){
                 Inlist = true;
             }
