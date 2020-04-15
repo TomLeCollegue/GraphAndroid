@@ -147,4 +147,17 @@ public class Path2Nodes extends AppCompatActivity {
         }
         return Inlist;
     }
+
+    private void GeneratePath(Node parent, int index){
+        if ((ListNode.get(index).node.equals(parent)) && (index >= 1)){
+
+            ListPath.add(ListNode.get(index));
+
+            GeneratePath(ListNode.get(index).getParent(), index -1);
+        }
+        else if (index >= 1) {
+            GeneratePath(parent, index-1);
+        }
+    }
+    
 }
