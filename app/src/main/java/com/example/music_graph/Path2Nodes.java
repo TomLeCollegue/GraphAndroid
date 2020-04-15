@@ -120,15 +120,19 @@ public class Path2Nodes extends AppCompatActivity {
         int nbVoisins = n.getNeighbours().size();
         for(int i = 0; i < nbVoisins; i++){
             if ((nbVoisins > 0) && (FindNode2 == false)){
-                ListNode.add(new NodeAndDistance(n.getNeighbours().get(i).getEnd(), distance, n, n.getNeighbours().get(i).getRelation()));
-                if (ListNode.get(ListNode.size()-1).getNode().equals(MainActivity.graph.getNodes().get(id_position2))){
-                    FindNode2 = true;
+                if(IsInList(n.getNeighbours().get(i).getEnd()) == false) {
+                    ListNode.add(new NodeAndDistance(n.getNeighbours().get(i).getEnd(), distance, n, n.getNeighbours().get(i).getRelation()));
+                    if (ListNode.get(ListNode.size() - 1).getNode().equals(MainActivity.graph.getNodes().get(id_position2))) {
+                        FindNode2 = true;
+                    }
                 }
             }
         }
         for(int i = 0; i < nbVoisins; i++){
             if ((nbVoisins > 0) && (FindNode2 == false)){
-                parcoursNoeuds(n.getNeighbours().get(i).getEnd(), distance+1);
+                if(IsInList(n.getNeighbours().get(i).getEnd())) {
+                    parcoursNoeuds(n.getNeighbours().get(i).getEnd(), distance + 1);
+                }
             }
         }
     }
@@ -145,5 +149,15 @@ public class Path2Nodes extends AppCompatActivity {
         else if (index >= 1) {
             GeneratePath(parent, index-1);
         }
+    }
+
+    private boolean IsInList(Node n){
+        boolean Inlist = false;
+        for (int i = 1; i < ListNode.size(); i++ ){
+            if (ListNode.get(i).getNode().equals(n)){
+                Inlist = true;
+            }
+        }
+        return Inlist;
     }
 }

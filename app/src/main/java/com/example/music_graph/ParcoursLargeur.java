@@ -84,14 +84,29 @@ public class ParcoursLargeur extends AppCompatActivity {
         int nbVoisins = n.getNeighbours().size();
         for(int i = 0; i < nbVoisins; i++){
             if (nbVoisins > 0){
+                if(IsInList(n.getNeighbours().get(i).getEnd()) == false) {
                 ListNode.add(new NodeAndDistance(n.getNeighbours().get(i).getEnd(), distance, n, n.getNeighbours().get(i).getRelation()));
+                }
             }
         }
         for(int i = 0; i < nbVoisins; i++){
             if (nbVoisins > 0){
+                if(IsInList(n.getNeighbours().get(i).getEnd())) {
                 parcoursNoeuds(n.getNeighbours().get(i).getEnd(), distance+1);
+                }
             }
         }
     }
+
+    private boolean IsInList(Node n){
+        boolean Inlist = false;
+        for (int i = 0; i < ListNode.size(); i++ ){
+            if (ListNode.get(i).getNode().equals(n)){
+                Inlist = true;
+            }
+        }
+        return Inlist;
+    }
+
 
 }
