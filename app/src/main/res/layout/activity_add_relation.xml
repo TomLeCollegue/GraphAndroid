@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4bacb8"
     tools:context=".AddRelation">
 
     <LinearLayout
@@ -11,44 +12,63 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/noeud1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Premier Noeud" />
+            android:layout_margin="10dp"
+            android:background="#b4ffff"
+            android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/spinner_n1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/noeud1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80deea"
+                android:padding="5dp"
+                android:text="Premier Noeud"
+                android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/relation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Relation" />
+            <Spinner
+                android:id="@+id/spinner_n1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
 
-        <Spinner
-            android:id="@+id/spinner_type_relation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/relation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80deea"
+                android:padding="5dp"
+                android:text="Relation"
+                android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/noeud2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Deuxieme Noeud" />
+            <Spinner
+                android:id="@+id/spinner_type_relation"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
 
-        <Spinner
-            android:id="@+id/spinner_n2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/noeud2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80deea"
+                android:padding="5dp"
+                android:text="Deuxieme Noeud"
+                android:textSize="20dp" />
 
-        <Button
-            android:id="@+id/button_add_relation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ajouter la Relation" />
+            <Spinner
+                android:id="@+id/spinner_n2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
 
+            <Button
+                android:id="@+id/button_add_relation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Ajouter la Relation" />
+
+        </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

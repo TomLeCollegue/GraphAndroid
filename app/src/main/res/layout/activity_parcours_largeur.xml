@@ -9,30 +9,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
-        <TextView
-            android:id="@+id/nameNode"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="Noeud" />
+            android:background="#b4ffff"
+            android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/spinner_node"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/nameNode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80deea"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="Noeud"
+                android:textSize="20dp" />
 
-        <Button
-            android:id="@+id/button_parcours"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Parcours en Largeur du graph" />
+            <Spinner
+                android:id="@+id/spinner_node"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/button_parcours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Parcours en Largeur du graph" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_parcours"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

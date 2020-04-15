@@ -4,11 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4bacb8"
     tools:context=".AddNode">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="#b4ffff"
         android:gravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
@@ -17,7 +20,10 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nom" />
+            android:background="#80deea"
+            android:padding="5dp"
+            android:text="Nom"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/nom_noeud_text"
@@ -30,7 +36,10 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type" />
+            android:background="#80deea"
+            android:padding="5dp"
+            android:text="Type"
+            android:textSize="20dp" />
 
         <Spinner
             android:id="@+id/spinner_type"
@@ -41,6 +50,7 @@
             android:id="@+id/button_ajout_noeud"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:text="Creer Le noeaud" />
 
     </LinearLayout>

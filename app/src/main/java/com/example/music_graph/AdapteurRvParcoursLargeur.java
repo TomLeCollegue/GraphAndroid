@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -48,7 +49,7 @@ public class AdapteurRvParcoursLargeur extends RecyclerView.Adapter<AdapteurRvPa
         private final TextView NameNode;
         private final TextView DistanceNode;
         private final TextView ParentNode;
-
+        private final TextView RelationNode;
 
         public MyViewHolder1(@NonNull final View itemView) {
             super(itemView);
@@ -56,6 +57,7 @@ public class AdapteurRvParcoursLargeur extends RecyclerView.Adapter<AdapteurRvPa
             NameNode = itemView.findViewById(R.id.text_name_node);
             DistanceNode = itemView.findViewById(R.id.text_distance_node);
             ParentNode = itemView.findViewById(R.id.text_name_parent);
+            RelationNode = itemView.findViewById(R.id.text_relation_node);
 
 
         }
@@ -65,6 +67,7 @@ public class AdapteurRvParcoursLargeur extends RecyclerView.Adapter<AdapteurRvPa
             NameNode.setText(node.getNode().getName());
             DistanceNode.setText("distance : " + node.getDistance());
             ParentNode.setText(node.getParent().getName());
+            RelationNode.setText(node.getRelation());
 
 
         }

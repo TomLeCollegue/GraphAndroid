@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -9,33 +10,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="5dp">
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10sp"
-            android:background="#A3A3A3"
-            android:orientation="horizontal"
-            android:padding="10sp">
+            android:background="#4bacb8"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/type_node"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="type"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="#80deea"
+                android:orientation="horizontal"
+                android:padding="10sp">
 
-            <TextView
-                android:id="@+id/Name_nodes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="name"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/type_node"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="type"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Name_nodes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="name"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

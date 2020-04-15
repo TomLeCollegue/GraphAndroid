@@ -9,57 +9,72 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#7edeea"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Completer le Graph" />
+            android:padding="10dp"
+            android:text="Completer le Graph"
+            android:textSize="25dp" />
 
         <Button
             android:id="@+id/add_node"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="#b2ffff"
             android:text="Ajouter un Noeud" />
 
         <Button
             android:id="@+id/add_relation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="#b2ffff"
             android:text="Ajouter une relation" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#7edeea"
             android:gravity="center"
-            android:text="Chercher les informations" />
+            android:padding="10dp"
+            android:text="Chercher les informations"
+            android:textSize="25dp" />
 
         <Button
             android:id="@+id/display_all_nodes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="#b2ffff"
             android:text="Afficher tous les Noeuds" />
 
         <Button
             android:id="@+id/parcours_larg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="#b2ffff"
             android:text="Parcours en Largeur" />
 
         <Button
             android:id="@+id/button_path_2_nodes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="#b2ffff"
             android:text="Chemin le plus court Entre deux points" />
 
         <LinearLayout
@@ -72,14 +87,18 @@
                 android:id="@+id/save_graph"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="#b2ffff"
                 android:text="Save Graph" />
 
             <Button
                 android:id="@+id/load_graph"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="#b2ffff"
                 android:text="Load Graph" />
         </LinearLayout>
 

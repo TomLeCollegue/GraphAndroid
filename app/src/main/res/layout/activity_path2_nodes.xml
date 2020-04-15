@@ -9,41 +9,58 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
-        <TextView
-            android:id="@+id/text_first_node"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Premier Noeud" />
+            android:background="#b4ffff"
+            android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/spinner_first_node"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/text_first_node"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80deea"
+                android:padding="5dp"
+                android:text="Premier Noeud"
+                android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/text_second_node"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Deuxieme Noeud" />
+            <Spinner
+                android:id="@+id/spinner_first_node"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
 
-        <Spinner
-            android:id="@+id/spinner_second_node"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/text_second_node"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#80deea"
+                android:padding="5dp"
+                android:text="Deuxieme Noeud"
+                android:textSize="20dp" />
 
-        <Button
-            android:id="@+id/button_search_node"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Chercher le chemin le plus court" />
+            <Spinner
+                android:id="@+id/spinner_second_node"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/button_search_node"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Chercher le chemin le plus court" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/boolean_path"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chemin Trouvé" />
+            android:background="#80deea"
+            android:gravity="center_horizontal"
+            android:textSize="25dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_path"
