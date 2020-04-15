@@ -2,11 +2,17 @@ package com.example.music_graph;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,13 +20,21 @@ public class MainActivity extends AppCompatActivity {
     private Button bAddRelation;
     private Button bParcoursLargeur;
     private Button bDisplayNodes;
+    private Button bSearchNode;
+    private Button bSaveGraph;
+    private Button bLoadGraph;
+
     public static Graph graph;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        graph = new Graph();
+        if(graph == null) {
+            graph = new Graph();
+        }
+        
 
         graph.fillTypesNode();
         graph.fillTypesRelations();
@@ -30,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         bAddRelation = (Button) findViewById(R.id.add_relation);
         bParcoursLargeur = (Button) findViewById(R.id.parcours_larg);
         bDisplayNodes = (Button) findViewById(R.id.display_all_nodes);
+        bSearchNode = (Button) findViewById(R.id.button_path_2_nodes);
+        bLoadGraph = (Button) findViewById(R.id.load_graph);
+        bSaveGraph = (Button) findViewById(R.id.save_graph);
+
 
         bAddNode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +72,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, DisplayNodes.class));
+            }
+        });
+
+        bSearchNode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Path2Nodes.class));
+            }
+        });
+
+        bSaveGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        bLoadGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
 

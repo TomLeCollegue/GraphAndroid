@@ -1,10 +1,17 @@
 package com.example.music_graph;
 
+import android.content.Context;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Graph {
+public class Graph implements Serializable {
     private ArrayList<Node> nodes = new ArrayList<Node>();
     private int numberOfNodes = 0;
 
@@ -68,6 +75,7 @@ public class Graph {
     public ArrayList<String> getTypesRelations() {
         return typesRelations;
     }
+
 
     @Override
     public String toString() {

@@ -17,7 +17,6 @@ public class ParcoursLargeur extends AppCompatActivity {
 
     private Spinner spinnerNode;
     private Button bParcours;
-    private Button bRefresh;
     private int id_position = 0;
     private RecyclerView rv;
     private AdapteurRvParcoursLargeur MyAdapter;
@@ -33,10 +32,6 @@ public class ParcoursLargeur extends AppCompatActivity {
         spinnerNode = (Spinner) findViewById(R.id.spinner_node);
         bParcours = (Button) findViewById(R.id.button_parcours);
         rv = (RecyclerView) findViewById(R.id.rv_parcours);
-        bRefresh = (Button) findViewById(R.id.button_refresh);
-
-
-
 
 
         //Spinner Adapter
@@ -98,4 +93,5 @@ public class ParcoursLargeur extends AppCompatActivity {
             }
         }
     }
+
 }
