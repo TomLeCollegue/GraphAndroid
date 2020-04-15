@@ -18,7 +18,7 @@ public class ParcoursLargeur extends AppCompatActivity {
     private Spinner spinnerNode;
     private Button bParcours;
     private Button bRefresh;
-    private int id = 0;
+    private int id_position = 0;
     private RecyclerView rv;
     private AdapteurRvParcoursLargeur MyAdapter;
 
@@ -36,7 +36,7 @@ public class ParcoursLargeur extends AppCompatActivity {
         bRefresh = (Button) findViewById(R.id.button_refresh);
 
 
-        ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(0), 0, MainActivity.graph.getNodes().get(0), " "));
+
 
 
         //Spinner Adapter
@@ -47,7 +47,7 @@ public class ParcoursLargeur extends AppCompatActivity {
         spinnerNode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                id = position;
+                id_position = position;
             }
 
             @Override
@@ -68,18 +68,10 @@ public class ParcoursLargeur extends AppCompatActivity {
             public void onClick(View v) {
 
                 ParcoursLargeurFonction();
-
-
-            }
-        });
-
-        bRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
                 rv.setLayoutManager(new LinearLayoutManager(ParcoursLargeur.this, LinearLayoutManager.VERTICAL, false));
                 MyAdapter = new AdapteurRvParcoursLargeur(ListNode);
                 rv.setAdapter(MyAdapter);
+
             }
         });
     }
@@ -87,8 +79,9 @@ public class ParcoursLargeur extends AppCompatActivity {
 
 
     private void ParcoursLargeurFonction(){
-
-        parcoursNoeuds(MainActivity.graph.getNodes().get(id), 1);
+        ListNode.clear();
+        ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(id_position), 0, MainActivity.graph.getNodes().get(id_position), " "));
+        parcoursNoeuds(MainActivity.graph.getNodes().get(id_position), 1);
     }
 
 
@@ -96,8 +89,11 @@ public class ParcoursLargeur extends AppCompatActivity {
         int nbVoisins = n.getNeighbours().size();
         for(int i = 0; i < nbVoisins; i++){
             if (nbVoisins > 0){
-                
                 ListNode.add(new NodeAndDistance(n.getNeighbours().get(i).getEnd(), distance, n, n.getNeighbours().get(i).getRelation()));
+            }
+        }
+        for(int i = 0; i < nbVoisins; i++){
+            if (nbVoisins > 0){
                 parcoursNoeuds(n.getNeighbours().get(i).getEnd(), distance+1);
             }
         }
