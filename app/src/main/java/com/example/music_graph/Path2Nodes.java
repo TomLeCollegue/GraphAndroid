@@ -86,11 +86,24 @@ public class Path2Nodes extends AppCompatActivity {
             public void onClick(View v) {
                 ListNode.clear();
                 ListPath.clear();
+                FindNode2 = false;
 
                 parcoursGraph(2, 0 );
+
+                ListPath.clear();
+                if(FindNode2 == true) {
+                    boolPath.setText("Chemin Trouvé !");
+                    ListPath.add(ListNode.get(ListNode.size() - 1));      // on ajoute a ListPath le dernier noeud de la ListNode
+                    GeneratePath(ListPath.get(0).getParent(), ListNode.size() - 2);
+                    ListPath.add(ListNode.get(0));
+                }
+                else{
+                    boolPath.setText("Pas de Chemin Trouvé");
+                }
+
                 Collections.reverse(ListPath);
                 rv.setLayoutManager(new LinearLayoutManager(Path2Nodes.this, LinearLayoutManager.VERTICAL, false));
-                MyAdapter = new AdapteurRvParcoursLargeur(ListNode);
+                MyAdapter = new AdapteurRvParcoursLargeur(ListPath);
                 rv.setAdapter(MyAdapter);
             }
         });
@@ -107,37 +120,45 @@ public class Path2Nodes extends AppCompatActivity {
             //on ajoute tous ses voisins;
             for (int i = 0; i < MainActivity.graph.getNodes().get(id_position1).getNeighbours().size(); i++) {
                 //if ( !IsInList(MainActivity.graph.getNodes().get(id_position1).getNeighbours().get(i).getEnd()) ){
-                ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(id_position1).getNeighbours().get(i).getEnd(), 1, MainActivity.graph.getNodes().get(id_position1), MainActivity.graph.getNodes().get(id_position1).getNeighbours().get(i).getRelation()));
-                compteurVoisins++;
-                //}
+                if (!FindNode2){
+                    ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(id_position1).getNeighbours().get(i).getEnd(), 1, MainActivity.graph.getNodes().get(id_position1), MainActivity.graph.getNodes().get(id_position1).getNeighbours().get(i).getRelation()));
+                    compteurVoisins++;
+                    if (ListNode.get(ListNode.size() - 1).getNode().equals(MainActivity.graph.getNodes().get(id_position2))) {
+                        FindNode2 = true;
+                    }
+                }
             }
             nbVoisinprecedant = compteurVoisins;
             boolPath.setText("nombre de voisin : "+ nbVoisinprecedant);
         }
-        compteurVoisins = 0;
-        if (nbVoisinprecedant != 0) {
+        if (!FindNode2) {
+            compteurVoisins = 0;
+            if (nbVoisinprecedant != 0) {
 
-            for (int i = 0; i < nbVoisinprecedant + 1 + 1; i++) {
-                for (int j = 0; j < ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().size(); j++) {
-                    if (!IsInList(ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getEnd())) {
-                        ListNode.add(new NodeAndDistance( ListNode.get(ListNode.size() -1 - i).getNode().getNeighbours().get(j).getEnd(), distance, ListNode.get(ListNode.size() - 1 - i).getNode(), " "));
-                        compteurVoisins++;
-                        i++;
-                        boolPath.setText("nombre de voisin : " + compteurVoisins);
+                for (int i = 0; i < nbVoisinprecedant + 1 + 1; i++) {
+                    for (int j = 0; j < ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().size(); j++) {
+                        if (!FindNode2) {
+                            if (!IsInList(ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getEnd())) {
+                                ListNode.add(new NodeAndDistance(ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getEnd(), distance, ListNode.get(ListNode.size() - 1 - i).getNode(), " "));
+                                compteurVoisins++;
+                                i++;
+                                boolPath.setText("nombre de voisin : " + compteurVoisins);
+                                if (ListNode.get(ListNode.size() - 1).getNode().equals(MainActivity.graph.getNodes().get(id_position2))) {
+                                    FindNode2 = true;
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-        if (compteurVoisins != 0){
+        if (compteurVoisins != 0 && !FindNode2){
             parcoursGraph(distance + 1 , compteurVoisins);
         }
 
     }
 
-
-
-
-
+    // regarde si un noeud est deja tombé dans le parcours
     private boolean IsInList(Node n){
         boolean Inlist = false;
         for (int i = 0; i < ListNode.size(); i++ ){
@@ -148,6 +169,7 @@ public class Path2Nodes extends AppCompatActivity {
         return Inlist;
     }
 
+    //genere le chemin correct
     private void GeneratePath(Node parent, int index){
         if ((ListNode.get(index).node.equals(parent)) && (index >= 1)){
 
