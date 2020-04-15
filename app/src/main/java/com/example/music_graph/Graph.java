@@ -36,17 +36,13 @@ public class Graph implements Serializable {
 
     public void fillTypesRelations(){
         this.typesRelations.clear();
-        this.typesRelations.add("Ecoute ");
-        this.typesRelations.add("Habite ");
-        this.typesRelations.add("Est né à ");
-        this.typesRelations.add("est né en ");
-        this.typesRelations.add("est allé au concert ");
-        this.typesRelations.add("Contient le morceau ");
-        this.typesRelations.add("est du ");
-        this.typesRelations.add("Artiste(s) ");
-        this.typesRelations.add("Est sorti en ");
-        this.typesRelations.add("s'est passé en ");
-
+        this.typesRelations.add("Aime ");
+        this.typesRelations.add("Appartient à ");
+        this.typesRelations.add("a composé ");
+        this.typesRelations.add("a joué avec ");
+        this.typesRelations.add("fait parti ");
+        this.typesRelations.add("a fait un concert ");
+        this.typesRelations.add("Lieu ");
 
     }
 

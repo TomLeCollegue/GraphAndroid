@@ -95,7 +95,7 @@ public class Path2Nodes extends AppCompatActivity {
                     ListPath.add(ListNode.get(0));
                 }
                 else{
-                    boolPath.setText("Pas de Chemin Déso");
+                    boolPath.setText("Pas de Chemin Trouvé");
                 }
                 Collections.reverse(ListPath);
 
