@@ -139,7 +139,7 @@ public class Path2Nodes extends AppCompatActivity {
                     for (int j = 0; j < ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().size(); j++) {
                         if (!FindNode2) {
                             if (!IsInList(ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getEnd())) {
-                                ListNode.add(new NodeAndDistance(ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getEnd(), distance, ListNode.get(ListNode.size() - 1 - i).getNode(), " "));
+                                ListNode.add(new NodeAndDistance(ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getEnd(), distance, ListNode.get(ListNode.size() - 1 - i).getNode(), ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getRelation()));
                                 compteurVoisins++;
                                 i++;
                                 boolPath.setText("nombre de voisin : " + compteurVoisins);
