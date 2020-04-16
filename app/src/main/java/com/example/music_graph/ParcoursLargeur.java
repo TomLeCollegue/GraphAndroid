@@ -61,8 +61,10 @@ public class ParcoursLargeur extends AppCompatActivity {
         bParcours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ListNode.clear();
 
-                ParcoursLargeurFonction();
+
+                parcoursGraph(2,0);
                 rv.setLayoutManager(new LinearLayoutManager(ParcoursLargeur.this, LinearLayoutManager.VERTICAL, false));
                 MyAdapter = new AdapteurRvParcoursLargeur(ListNode);
                 rv.setAdapter(MyAdapter);
@@ -73,30 +75,46 @@ public class ParcoursLargeur extends AppCompatActivity {
 
 
 
-    private void ParcoursLargeurFonction(){
-        ListNode.clear();
-        ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(id_position), 0, MainActivity.graph.getNodes().get(id_position), " "));
-        parcoursNoeuds(MainActivity.graph.getNodes().get(id_position), 1);
-    }
+    private void parcoursGraph(int distance, int nbVoisinprecedant) {
+        int compteurVoisins = 0;
 
+        // Lors de l'initialisation
+        if (ListNode.isEmpty()) {
+            //on ajoute le noeud de base
+            ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(id_position), 0, MainActivity.graph.getNodes().get(id_position), " "));
 
-    private void parcoursNoeuds(Node n, int distance){
-        int nbVoisins = n.getNeighbours().size();
-        for(int i = 0; i < nbVoisins; i++){
-            if (nbVoisins > 0){
-                if(IsInList(n.getNeighbours().get(i).getEnd()) == false) {
-                ListNode.add(new NodeAndDistance(n.getNeighbours().get(i).getEnd(), distance, n, n.getNeighbours().get(i).getRelation()));
+            //on ajoute tous ses voisins;
+            for (int i = 0; i < MainActivity.graph.getNodes().get(id_position).getNeighbours().size(); i++) {
+                //if ( !IsInList(MainActivity.graph.getNodes().get(id_position1).getNeighbours().get(i).getEnd()) ){
+                ListNode.add(new NodeAndDistance(MainActivity.graph.getNodes().get(id_position).getNeighbours().get(i).getEnd(), 1, MainActivity.graph.getNodes().get(id_position), MainActivity.graph.getNodes().get(id_position).getNeighbours().get(i).getRelation()));
+                compteurVoisins++;
+                //}
+            }
+            nbVoisinprecedant = compteurVoisins;
+
+        }
+        compteurVoisins = 0;
+        if (nbVoisinprecedant != 0) {
+            int decalage = 0;
+            for (int i = 0; i < nbVoisinprecedant; i++) {
+                for (int j = 0; j < ListNode.get(ListNode.size() - 1 - (i+decalage)).getNode().getNeighbours().size(); j++) {
+                    if (!IsInList(ListNode.get(ListNode.size() - 1 - (i+decalage)).getNode().getNeighbours().get(j).getEnd())) {
+                        ListNode.add(new NodeAndDistance( ListNode.get(ListNode.size() -1 - (i+decalage)).getNode().getNeighbours().get(j).getEnd(), distance, ListNode.get(ListNode.size() - 1 - (i+decalage)).getNode(),  ListNode.get(ListNode.size() - 1 - (i+decalage)).getNode().getNeighbours().get(j).getRelation()));
+                        compteurVoisins++;
+                        decalage++;
+                    }
                 }
             }
         }
-        for(int i = 0; i < nbVoisins; i++){
-            if (nbVoisins > 0){
-                if(IsInList(n.getNeighbours().get(i).getEnd())) {
-                parcoursNoeuds(n.getNeighbours().get(i).getEnd(), distance+1);
-                }
-            }
+        if (compteurVoisins != 0){
+            parcoursGraph(distance + 1 , compteurVoisins);
         }
+
     }
+
+
+
+
 
     private boolean IsInList(Node n){
         boolean Inlist = false;
