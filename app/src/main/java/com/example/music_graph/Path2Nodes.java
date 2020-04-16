@@ -92,7 +92,12 @@ public class Path2Nodes extends AppCompatActivity {
 
                 ListPath.clear();
                 if(FindNode2 == true) {
-                    boolPath.setText("Chemin Trouvé !");
+                    if ( id_position1 == id_position2) {
+                        boolPath.setText("Cycle Trouvé !");
+                    }
+                    else {
+                        boolPath.setText("Chemin Trouvé !");
+                    }
                     ListPath.add(ListNode.get(ListNode.size() - 1));      // on ajoute a ListPath le dernier noeud de la ListNode
                     GeneratePath(ListPath.get(0).getParent(), ListNode.size() - 2);
                     ListPath.add(ListNode.get(0));
@@ -134,15 +139,14 @@ public class Path2Nodes extends AppCompatActivity {
         if (!FindNode2) {
             compteurVoisins = 0;
             if (nbVoisinprecedant != 0) {
-
-                for (int i = 0; i < nbVoisinprecedant + 1 + 1; i++) {
-                    for (int j = 0; j < ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().size(); j++) {
+                int decalage = 0;
+                for (int i = 0; i < nbVoisinprecedant; i++) {
+                    for (int j = 0; j < ListNode.get( ListNode.size() - 1 - (i+decalage) ).getNode().getNeighbours().size(); j++) {
                         if (!FindNode2) {
-                            if (!IsInList(ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getEnd())) {
-                                ListNode.add(new NodeAndDistance(ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getEnd(), distance, ListNode.get(ListNode.size() - 1 - i).getNode(), ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getRelation()));
+                            if (!IsInList(ListNode.get(ListNode.size() - 1 - (i+decalage) ).getNode().getNeighbours().get(j).getEnd())) {
+                                ListNode.add(new NodeAndDistance(ListNode.get( ListNode.size()-1-(i+decalage) ).getNode().getNeighbours().get(j).getEnd(), distance, ListNode.get( ListNode.size()-1-(i+decalage) ).getNode(), ListNode.get( ListNode.size()-1-(i+decalage) ).getNode().getNeighbours().get(j).getRelation()));
                                 compteurVoisins++;
-                                i++;
-                                boolPath.setText("nombre de voisin : " + compteurVoisins);
+                                decalage++;
                                 if (ListNode.get(ListNode.size() - 1).getNode().equals(MainActivity.graph.getNodes().get(id_position2))) {
                                     FindNode2 = true;
                                 }
@@ -160,8 +164,15 @@ public class Path2Nodes extends AppCompatActivity {
 
     // regarde si un noeud est deja tombé dans le parcours
     private boolean IsInList(Node n){
+        int chercheCycle;
+        if( id_position1 == id_position2){
+            chercheCycle = 1;
+        }
+        else{
+            chercheCycle = 0;
+        }
         boolean Inlist = false;
-        for (int i = 0; i < ListNode.size(); i++ ){
+        for (int i = chercheCycle; i < ListNode.size(); i++ ){
             if (ListNode.get(i).getNode().equals(n)){
                 Inlist = true;
             }
