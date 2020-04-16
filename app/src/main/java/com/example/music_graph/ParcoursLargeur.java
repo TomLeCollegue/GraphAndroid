@@ -95,13 +95,13 @@ public class ParcoursLargeur extends AppCompatActivity {
         }
         compteurVoisins = 0;
         if (nbVoisinprecedant != 0) {
-
-            for (int i = 0; i < nbVoisinprecedant + 1 + 1; i++) {
-                for (int j = 0; j < ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().size(); j++) {
-                    if (!IsInList(ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getEnd())) {
-                        ListNode.add(new NodeAndDistance( ListNode.get(ListNode.size() -1 - i).getNode().getNeighbours().get(j).getEnd(), distance, ListNode.get(ListNode.size() - 1 - i).getNode(),  ListNode.get(ListNode.size() - 1 - i).getNode().getNeighbours().get(j).getRelation()));
+            int decalage = 0;
+            for (int i = 0; i < nbVoisinprecedant; i++) {
+                for (int j = 0; j < ListNode.get(ListNode.size() - 1 - (i+decalage)).getNode().getNeighbours().size(); j++) {
+                    if (!IsInList(ListNode.get(ListNode.size() - 1 - (i+decalage)).getNode().getNeighbours().get(j).getEnd())) {
+                        ListNode.add(new NodeAndDistance( ListNode.get(ListNode.size() -1 - (i+decalage)).getNode().getNeighbours().get(j).getEnd(), distance, ListNode.get(ListNode.size() - 1 - (i+decalage)).getNode(),  ListNode.get(ListNode.size() - 1 - (i+decalage)).getNode().getNeighbours().get(j).getRelation()));
                         compteurVoisins++;
-                        i++;
+                        decalage++;
                     }
                 }
             }

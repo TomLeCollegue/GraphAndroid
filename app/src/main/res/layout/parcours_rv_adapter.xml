@@ -28,14 +28,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/text_relation_node"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#b4ffff"
-                android:padding="5dp"
-                android:text="relation" />
-
-            <TextView
                 android:id="@+id/text_distance_node"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,6 +42,14 @@
                 android:background="#b4ffff"
                 android:padding="5dp"
                 android:text="Parent" />
+
+            <TextView
+                android:id="@+id/text_relation_node"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#b4ffff"
+                android:padding="5dp"
+                android:text="relation" />
 
         </LinearLayout>
     </LinearLayout>
