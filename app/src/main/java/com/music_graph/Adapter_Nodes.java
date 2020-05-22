@@ -1,6 +1,5 @@
-package com.example.music_graph;
+package com.music_graph;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

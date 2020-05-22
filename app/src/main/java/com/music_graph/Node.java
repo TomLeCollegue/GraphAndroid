@@ -1,12 +1,7 @@
-package com.example.music_graph;
-
-import android.content.Context;
-import android.widget.Toast;
+package com.music_graph;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.*;
 
 
 public class Node implements Serializable {

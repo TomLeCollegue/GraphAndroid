@@ -1,4 +1,4 @@
-package com.example.music_graph;
+package com.music_graph;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.music_graph", appContext.getPackageName());
+        assertEquals("com.music_graph", appContext.getPackageName());
     }
 }

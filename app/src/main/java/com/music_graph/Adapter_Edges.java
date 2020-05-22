@@ -1,4 +1,4 @@
-package com.example.music_graph;
+package com.music_graph;
 
 import android.view.LayoutInflater;
 import android.view.View;

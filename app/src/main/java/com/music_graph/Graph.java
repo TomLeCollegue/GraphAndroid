@@ -1,15 +1,7 @@
-package com.example.music_graph;
+package com.music_graph;
 
-import android.content.Context;
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Graph implements Serializable {
     private ArrayList<Node> nodes = new ArrayList<Node>();
